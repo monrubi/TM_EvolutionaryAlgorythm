@@ -1,0 +1,54 @@
+Descripción binaria de la máquina
+i-ésimo bloque (16 bits) correponde al estado "i"
+10000001 11000010 01000000 01000011 11000000 11111111 11000001 10000100 00000011 00000001
+\__________________________________  ___________________________________________________/
+                                   \/
+                                  80 bits
+1 bit para el bit que la cabeza escribe en la cinta
+1 bit para el movimiemto de la cabeza: "0" -> Derecha; "1" -> Izquierda
+6 bits para el siguiente estado ==> 2^6 ==> 64 estados máximo
+EL ESTADO DE "HALT" ES, POR CONVENCIÓN, EL ESTADO "63" (111111)
+
+La MT "Proyecto.txt" es:
+	10000001 11000010
+	01000000 01000011
+	11000000 11111111
+	11000001 10000100
+	00000011 00000001
+
+10000001
+SIGNIFICADO:
+   Estado "0"
+   Símbolo en la cinta
+      0            1
+1 0 000001 --- 1 1 000010 
+Lee "0", escribe "1"; se mueve a la   derecha ("0"); pasa al estado <000001>
+Lee "1", escribe "1"; se mueve a la izquierda ("1"); pasa al estado <000010>
+
+   Estado 1
+   Símbolo en la cinta
+      0            1
+0 1 000000 --- 0 1 000011
+Lee "0", escribe "0"; se mueve a la izquierda ("1"); pasa al estado <000000>
+Lee "1", escribe "0"; se mueve a la izquierda ("1"); pasa al estado <000011>
+
+    Estado 2
+    Símbolo en la cinta
+      0            1
+1 1 000000 --- 1 1 111111
+Lee "0", escribe "1"; se mueve a la izquierda ("1"); pasa al estado <000000>
+Lee "1", escribe "1"; se mueve a la izquierda ("1"); pasa al estado <111111>
+                                                                                 <HALT>
+   Estado 3
+   Símbolo en la cinta
+      0            1
+1 1 000001 --- 1 0 000100
+Lee "0", escribe "1"; se mueve a la izquierda ("1"); pasa al estado <000001>
+Lee "1", escribe "1"; se mueve a la   derecha ("1"); pasa al estado <000100>
+
+   Estado 4
+   Símbolo en la cinta
+      0            1
+0 0 000011 --- 0 0 000001
+Lee "0", escribe "0"; se mueve a la   derecha ("0"); pasa al estado <000011>
+Lee "1", escribe "0"; se mueve a la   derecha ("0"); pasa al estado <000001>
